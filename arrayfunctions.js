@@ -42,3 +42,47 @@ console.log(cubeResult); // [1, 8, 27, 64, 125]
 
 const evenOrOddResult = arr.map(isEvenOrOdd);
 console.log(evenOrOddResult); // ["Odd", "Even", "Odd", "Even", "Odd"]
+
+
+/* 
+* when to use maps ?
+* In any situation when we have to do an operqation on every element of an array
+* and store the result of each operation
+* map can be a good option
+*
+
+* for example: 
+* Array of product objects.
+ */
+
+const newArr = [9,8,7,6,5];
+
+/* 
+    * if the funciton that we are passing to map takes two arguments
+    * then first argument will be accessign the actual value
+    * second argument will be accessing the index of that value
+*/
+function print(element, idx){
+    return `Element: index ${idx}, is ${element}`;
+}
+
+
+/* 
+* Here map is looping over every element of the array 
+* and then pasing element, index in the function print
+*/
+
+const result2 = newArr.map(print);
+console.log(result2); 
+
+
+function customeMapper(arr, func){
+    let result = [];
+    for(let i = 0; i < arr.length; i++){
+        result.push(func(arr[i], i)); // calling the function func with element and index
+    }
+    return result;
+}
+
+const value = customeMapper(newArr, print);
+console.log(value); 
